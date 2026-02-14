@@ -17,14 +17,12 @@ const contactRoutes = require('./routes/contact');
 const registrationRoutes = require('./routes/registration');
 
 // Middleware
-app.use(cors({
-  origin: [
-    process.env.FRONTEND_URL || 'http://localhost:3000',
-    'http://localhost:5173', // Vite dev server
-    'http://localhost:3000', // React dev server
-  ],
-  credentials: true
-}));
+app.use(
+  cors({
+    origin: [process.env.FRONTEND_URL || "https://mridvatsa.vercel.app/"],
+    credentials: true,
+  }),
+);
 app.use(express.json({ limit: '10mb' })); // Parse JSON bodies with size limit
 app.use(express.urlencoded({ extended: true, limit: '10mb' })); // Parse URL-encoded bodies
 
