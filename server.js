@@ -8,8 +8,8 @@ connectDB();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-const contactRoutes = require("./routes/contact");
-const registrationRoutes = require("./routes/registration");
+const contactRoutes = require("./routes/contact");      // ← line 9
+const registrationRoutes = require("./routes/registration"); // ← line 10
 
 // ✅ Manual CORS - must be FIRST before all other middleware
 app.use((req, res, next) => {
