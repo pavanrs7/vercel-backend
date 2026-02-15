@@ -13,14 +13,16 @@ const registrationRoutes = require("./routes/registration");
 
 // ✅ Manual CORS - must be FIRST before all other middleware
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "https://mridvatsa.vercel.app");
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  res.header("Access-Control-Allow-Credentials", "true");
+  res.setHeader("Access-Control-Allow-Origin", "https://mridvatsa.vercel.app");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, DELETE, OPTIONS",
+  );
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.setHeader("Access-Control-Allow-Credentials", "true");
 
-  // Handle preflight OPTIONS request immediately
   if (req.method === "OPTIONS") {
-    return res.status(200).end();
+    return res.sendStatus(200); // 👈 sendStatus instead of status().end()
   }
 
   next();
